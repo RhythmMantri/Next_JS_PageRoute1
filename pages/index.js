@@ -1,17 +1,32 @@
-import { getFeaturedEvents } from "../dummy-data";
+import { getFeaturedEvents } from "../helpers/api-util";
 import EventList from "../components/events/event-list";
-import EventSearch from "../components/events/event-search";
 import { Fragment } from "react/jsx-runtime";
-function HomePage() {
-    const featuredEvents = getFeaturedEvents();
+import Head from "next/head";
+function HomePage(props) {
+
 
     return (
         <Fragment>
-{/*             <EventSearch onSearch={findEventHandler}/>
- */}            <EventList items={featuredEvents} />
-
+            <Head>
+                <title>Next JS Events</title>
+                <meta
+                    name='description'
+                    content="Find a lot o fgreat events that allow u to evolve...."
+                />
+            </Head>
+            <EventList items={props.events} />
         </Fragment>
     )
+}
+
+export async function getStaticProps() {
+    const featuredEvents = await getFeaturedEvents();
+    return {
+        props: {
+            events: featuredEvents
+        },
+        revalidate: 1800,
+    }
 }
 
 export default HomePage;

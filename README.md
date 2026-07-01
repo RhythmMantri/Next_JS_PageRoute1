@@ -32,3 +32,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+
+Algorithm
+
+1. Fetch data from Firebase.
+        ↓
+2. Wait for the response.
+        ↓
+3. Convert the JSON into a JavaScript object.
+        ↓
+4. Get all the object keys.
+        ↓
+5. For each key:
+      - Get the corresponding event.
+      - Create a new event object.
+      - Add the Firebase key as the id.
+        ↓
+6. Return the array of transformed events.
